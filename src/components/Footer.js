@@ -1,11 +1,12 @@
+import logoIcon from "../images/Logo.svg";
+
 const Footer = () => {
   return (
     <footer>
-      <div>
-        <img src="" alt="" />
-        Logo
+      <div className="footer_logo">
+        <img src={logoIcon} alt="" />
       </div>
-      <div>
+      <div className="footer_navigation">
         <h4>Doormat Navigation</h4>
         <ul>
           <li>
@@ -28,8 +29,8 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <div>
-        <h4>Doormat Navigation</h4>
+      <div className="footer_navigation">
+        <h4>Contact</h4>
         <ul>
           <li>
             <a href="#">Address</a>
@@ -42,7 +43,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <div>
+      <div className="footer_navigation">
         <h4>Social Media Link</h4>
         <ul>
           <li>
