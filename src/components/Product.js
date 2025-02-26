@@ -1,6 +1,6 @@
 const Product = () => {
   return (
-    <div className="product">
+    <div className="product" id="product">
       <div className="product_image">
         <img src="" alt="" />
         Image here

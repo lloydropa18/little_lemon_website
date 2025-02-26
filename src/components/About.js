@@ -2,7 +2,7 @@ import marioPicA from "../images/Mario_and_AdriaA.jpg";
 import marioPicB from "../images/Mario_and_AdriaB.jpg";
 const About = () => {
   return (
-    <section className="about_section">
+    <section className="about_section" id="about">
       <div className="about_details">
         <h1 className="website_heading">Little Lemon</h1>
         <h2 className="website_subheading">Chicago</h2>

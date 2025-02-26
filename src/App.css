@@ -54,7 +54,6 @@ img {
   color: #ffffff;
 }
 .button {
-  display: inline-block;
   text-decoration: none;
   font-weight: bold;
   font-size: 12px;
@@ -101,11 +100,11 @@ img {
 }
 
 .product {
-  min-width: 300px;
-  min-height: 300px;
+  width: 300px;
+  height: 300px;
   background-color: #edefee;
   text-align: left;
-  padding: 20px 50px;
+  padding: 40px 50px;
   margin: 10px 20px;
 }
 
@@ -115,7 +114,8 @@ img {
 }
 
 .testimonials_section {
-  margin-top: 70px;
+  margin: 70px 0;
+  padding: 40px 0;
   background-color: #edefee;
   display: flex;
   flex-direction: column;
@@ -131,7 +131,7 @@ img {
 .rating_card {
   width: 300px;
   height: 200px;
-  margin: 10px 0;
+  margin: 10px;
   padding: 0 10px;
   background-color: #ffffff;
 }
@@ -141,7 +141,7 @@ img {
 }
 
 .about_section {
-  margin-top: 70px;
+  margin: 70px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -175,6 +175,7 @@ footer {
   justify-content: space-around;
   align-items: flex-start;
   padding: 0 10px;
+  background-color: #edefee;
 }
 footer .footer_logo {
   width: 100px;
@@ -192,4 +193,68 @@ footer .footer_navigation a {
 
 /* Media Query for Desktop */
 @media only screen and (min-width: 900px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+  }
+  nav ul li {
+    margin-right: 50px;
+  }
+  .button {
+    font-size: 18px;
+  }
+  .hero_section {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 100px;
+  }
+  .hero_image {
+    width: 501px;
+    height: 521px;
+  }
+  .website_heading {
+    font-size: 84px;
+  }
+  .website_description {
+    width: 500px;
+  }
+  .specials_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 200px;
+  }
+  .specials_bottom {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .about_section {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .about_images {
+    flex-direction: row;
+    position: relative;
+  }
+  .about_image1 {
+    position: absolute;
+    width: 250px;
+    height: 300px;
+    top: -80px;
+    right: 10px;
+    z-index: 1;
+  }
+  .about_image2 {
+    position: absolute;
+    width: 250px;
+    height: 300px;
+    top: -200px;
+    left: -80px;
+  }
 }

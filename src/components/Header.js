@@ -1,7 +1,6 @@
 import Navigation from "./Navigation";
 import logoIcon from "../images/Logo.svg";
-import hamburgerIcon from "../images/icon _hamburger menu.svg";
-import basketIcon from "../images/basket.svg";
+
 const Header = () => {
   return (
     <header>
