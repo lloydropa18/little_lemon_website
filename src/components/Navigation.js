@@ -20,7 +20,7 @@ const Navigation = () => {
           <Link to="/orderpage">Order Online</Link>
         </li>
         <li>
-          <Link to="">Login</Link>
+          <a href="#login">Login</a>
         </li>
       </ul>
     </nav>

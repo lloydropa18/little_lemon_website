@@ -1,13 +1,10 @@
 import Header from "../components/Header";
-import Main from "../components/Main";
-import Footer from "../components/Footer";
-
-const BookingPage = () => {
+import BookingForm from "../components/BookingForm";
+const BookingPage = ({ availableTimes, dispatch }) => {
   return (
     <>
       <Header />
-      <Main />
-      <Footer />
+      <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
     </>
   );
 };
