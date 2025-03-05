@@ -45,6 +45,7 @@ const BookingForm = ({ availableTimes, dispatch , submitForm}) => {
           name="date"
           value={formData.date}
           onChange={handleChange}
+          required
         />
         <label htmlFor="res-time">Choose time</label>
         <select
@@ -52,6 +53,7 @@ const BookingForm = ({ availableTimes, dispatch , submitForm}) => {
           name="time"
           value={formData.value}
           onChange={handleChange}
+          required
         >
           {availableTimes.availableTimes.map((time, index) => <option key={time}>{time}</option>)}
         </select>
@@ -66,6 +68,7 @@ const BookingForm = ({ availableTimes, dispatch , submitForm}) => {
         name="guests"
         value={formData.value}
         onChange={handleChange}
+        required
       />
       <label htmlFor="occasion">Occasion</label>
       <select
@@ -73,6 +76,7 @@ const BookingForm = ({ availableTimes, dispatch , submitForm}) => {
         name="occasion"
         value={formData.value}
         onChange={handleChange}
+        required
       >
         <option value="birthday">Birthday</option>
         <option value="anniversary">Anniversary</option>
@@ -80,7 +84,7 @@ const BookingForm = ({ availableTimes, dispatch , submitForm}) => {
       <input
         type="submit"
         value="Make Your reservation"
-        onClick={handleSubmit}
+        onSubmit={handleSubmit}
       />
     </form>
   );
