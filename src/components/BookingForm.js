@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const BookingForm = ({ availableTimes, dispatch }) => {
+const BookingForm = ({ availableTimes, dispatch , submitForm}) => {
   const [formData, setFormData] = useState({
     date: "",
     time: "",
@@ -17,7 +17,8 @@ const BookingForm = ({ availableTimes, dispatch }) => {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(e);
+    dispatch(formData.date);
+    submitForm(formData)
   }
 
   return (
@@ -51,9 +52,7 @@ const BookingForm = ({ availableTimes, dispatch }) => {
           value={formData.value}
           onChange={handleChange}
         >
-          {availableTimes.availableTimes.map((time, index) => {
-            return <option key={index}>{time}</option>;
-          })}
+          {availableTimes.availableTimes.map((time, index) => <option key={time}>{time}</option>)}
         </select>
       </div>
       <label htmlFor="guests">Number of guests</label>
