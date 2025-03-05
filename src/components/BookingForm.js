@@ -14,10 +14,11 @@ const BookingForm = ({ availableTimes, dispatch , submitForm}) => {
       ...formData,
       [name]: value,
     });
+    
   }
   function handleSubmit(e) {
-    e.preventDefault();
-    dispatch(formData.date);
+    e.preventDefault()
+    dispatch(formData.date)
     submitForm(formData)
   }
 
@@ -79,7 +80,7 @@ const BookingForm = ({ availableTimes, dispatch , submitForm}) => {
       <input
         type="submit"
         value="Make Your reservation"
-        onSubmit={handleSubmit}
+        onClick={handleSubmit}
       />
     </form>
   );
