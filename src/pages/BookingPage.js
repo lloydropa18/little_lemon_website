@@ -1,10 +1,10 @@
 import Header from "../components/Header";
 import BookingForm from "../components/BookingForm";
-const BookingPage = ({ availableTimes, dispatch, submitForm }) => {
+const BookingPage = ({ availableTimes, timeDispatch, submitForm }) => {
   return (
     <>
       <Header />
-      <BookingForm availableTimes={availableTimes} dispatch={dispatch} submitForm={submitForm}/>
+      <BookingForm availableTimes={availableTimes} timeDispatch={timeDispatch} submitForm={submitForm}/>
     </>
   );
 };

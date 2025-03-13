@@ -1,19 +1,17 @@
 import "./App.css";
 import Homepage from "./pages/Homepage";
 import BookingPage from "./pages/BookingPage";
-import OrderPage from "./pages/Orderpage";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { useEffect, useReducer, useState } from "react";
+import { useReducer, useState} from "react";
+import Confirmationpage from "./pages/Confirmationpage";
 
 function App() {
-  // const [availableTimes, setAvailableTimes] = useState([
-  //   "17:00",
-  //   "18:00",
-  //   "19:00",
-  //   "20:00",
-  //   "21:00",
-  //   "22:00",
-  // ]);
+  const [form, setFormData] = useState({
+    date: "",
+    time: "",
+    guests: 1,
+    occasion: "",
+  })
   const seededRandom = function (seed) {
     var m = 2 ** 35 - 31;
     var a = 185852;
@@ -37,19 +35,27 @@ function App() {
     }
     return result;
   };
-  const submitAPI = function (formData) {
+  const submitAPI = function(data) {
     return true;
   };
+
   const initializeTimes = { availableTimes: fetchAPI(new Date()) };
-  const [state, dispatch] = useReducer(updateTimes, initializeTimes);
-  function updateTimes(state, date) {
-    return { availableTimes: fetchAPI(new Date(date)) };
+
+  function updateTimes(date) {
+    return {availableTimes: fetchAPI(new Date(date)) };
   }
 
+  const [state, dispatch] = useReducer(updateTimes, initializeTimes);
+
   const navigate = useNavigate();
-  function submitForm(formData) {
-    if (submitAPI(formData)) {
-      navigate("/orderpage");
+
+  function submitForm(data) {
+    if (submitAPI(data)) {
+      setFormData({
+        ...form,
+        ...data
+      })
+      navigate("/confirmationpage");
     }
   }
 
@@ -62,12 +68,12 @@ function App() {
           element={
             <BookingPage
               availableTimes={state}
-              dispatch={dispatch}
+              timeDispatch={dispatch}
               submitForm={submitForm}
             />
           }
         ></Route>
-        <Route path="/orderpage" element={<OrderPage />}></Route>
+        <Route path="/confirmationpage" element={<Confirmationpage form={form}/>}></Route>
       </Routes>
     </>
   );

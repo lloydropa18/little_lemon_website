@@ -1,29 +1,42 @@
-import { useState } from "react";
-
-const BookingForm = ({ availableTimes, dispatch , submitForm}) => {
-  const [formData, setFormData] = useState({
+import { useReducer} from "react";
+import restaurantImgA from "../images/restaurant.jpg"
+import restaurantImgB from "../images/restaurantB.jpg"
+const BookingForm = ({ availableTimes, timeDispatch , submitForm }) => {
+  
+  const initialState = {
     date: "",
     time: "",
-    guests: 0,
-    occasion: null,
-  });
-  function handleChange(e) {
-    const name = e.target.name;
-    const value = e.target.value;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-    
+    guests: 1,
+    occasion: "",
   }
+
+  const reducer = (state, action) => {
+    switch(action.type) {
+      case 'SET_DATE':
+        return {...state, date : action.payload}
+      case 'SET_TIME':
+        return {...state, time: action.payload};
+      case 'SET_GUESTS':
+        return {...state, guests: action.payload};
+      case 'SET_OCCASION':
+        return {...state, occasion: action.payload};
+      case 'RESET':
+        return initialState;
+      default:
+        return state;
+    }
+  }
+
+  const [state, dispatch] = useReducer(reducer, initialState)
+
   function handleSubmit(e) {
     e.preventDefault()
-    dispatch(formData.date)
-    submitForm(formData)
+    timeDispatch(state.date)
+    submitForm(state)
   }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h1 className="website_heading" data-test-id="heading">
         Little Lemon
       </h1>
@@ -31,10 +44,10 @@ const BookingForm = ({ availableTimes, dispatch , submitForm}) => {
       <h3>Find a table for any occasion</h3>
       <div className="form_images">
         <div className="form_image_left">
-          <img src="" alt="" />
+          <img src={restaurantImgA} alt="restaurant" />
         </div>
         <div className="form_image_right">
-          <img src="" alt="" />
+          <img src={restaurantImgB} alt="A second restaurant" />
         </div>
       </div>
       <div className="multi_input_container">
@@ -43,50 +56,47 @@ const BookingForm = ({ availableTimes, dispatch , submitForm}) => {
           type="date"
           id="res-date"
           name="date"
-          value={formData.date}
-          onChange={handleChange}
+          value={state.date}
+          onChange={(e) => dispatch({type: 'SET_DATE', payload: e.target.value})}
           required
         />
         <label htmlFor="res-time">Choose time</label>
         <select
           id="res-time"
           name="time"
-          value={formData.value}
-          onChange={handleChange}
+          value={state.time}
+          onChange={(e) => dispatch({type: 'SET_TIME', payload: e.target.value})}
           required
         >
-          {availableTimes.availableTimes.map((time, index) => <option key={time}>{time}</option>)}
+          {availableTimes.availableTimes.map((time, index) => <option key={index}>{time}</option>)}
         </select>
       </div>
       <label htmlFor="guests">Number of guests</label>
       <input
-        type="number"
+        type="text"
         placeholder="1"
-        min="1"
-        max="10"
         id="guests"
         name="guests"
-        value={formData.value}
-        onChange={handleChange}
+        value={state.guests}
+        onChange={(e) => dispatch({type: 'SET_GUESTS', payload: e.target.value})}
         required
       />
       <label htmlFor="occasion">Occasion</label>
       <select
         id="occasion"
         name="occasion"
-        value={formData.value}
-        onChange={handleChange}
+        value={state.occasion}
+        onChange={(e) => dispatch({type: 'SET_OCCASION', payload: e.target.value})}
         required
       >
         <option value="birthday">Birthday</option>
         <option value="anniversary">Anniversary</option>
       </select>
-      <input
-        type="submit"
-        value="Make Your reservation"
-        onSubmit={handleSubmit}
-      />
+      <button type="submit">
+        Make Your reservation
+      </button>
     </form>
+
   );
 };
 
