@@ -6,7 +6,7 @@ const BookingForm = ({ availableTimes, timeDispatch , submitForm }) => {
   const initialState = {
     date: "",
     time: "",
-    guests: 1,
+    guests: "",
     occasion: "",
   }
 
@@ -36,66 +36,80 @@ const BookingForm = ({ availableTimes, timeDispatch , submitForm }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1 className="website_heading" data-test-id="heading">
-        Little Lemon
-      </h1>
-      <h2 className="website_subheading">Chicago</h2>
-      <h3>Find a table for any occasion</h3>
-      <div className="form_images">
-        <div className="form_image_left">
-          <img src={restaurantImgA} alt="restaurant" />
+    <div className="form_container">
+      <form onSubmit={handleSubmit}>
+        <h1 className="website_heading" data-test-id="heading">
+          Little Lemon
+        </h1>
+        <h2 className="website_subheading">Chicago</h2>
+        <h3>Find a table for any occasion</h3>
+        <div className="form_images">
+          <div className="form_image_left">
+            <img src={restaurantImgA} alt="restaurant" />
+          </div>
+          <div className="form_image_right">
+            <img src={restaurantImgB} alt="A second restaurant" />
+          </div>
         </div>
-        <div className="form_image_right">
-          <img src={restaurantImgB} alt="A second restaurant" />
+        <div className="input_container">
+          <div className="multi_input_container">
+            <label htmlFor="res-date">Choose date</label>
+            <input
+              type="date"
+              id="res-date"
+              name="date"
+              value={state.date}
+              onChange={(e) => dispatch({type: 'SET_DATE', payload: e.target.value})}
+              required
+            />
+            <label htmlFor="res-time">Choose time</label>
+            <select
+              id="res-time"
+              name="time"
+              value={state.time}
+              onChange={(e) => dispatch({type: 'SET_TIME', payload: e.target.value})}
+              required
+            >
+              {availableTimes.availableTimes.map((time, index) => <option key={index}>{time}</option>)}
+            </select>
+          </div>
+          <div className="multi_input_container">
+            <label htmlFor="guests">Number of guests</label>
+            <input
+              type="number"
+              id="guests"
+              name="guests"
+              placeholder="1-10"
+              min={1}
+              max={10}
+              value={state.guests}
+              onChange={(e) => {
+                const value = e.target.value === '' ? '' : Number(e.target.value);
+                // If the value is within the range 1-10, update the state
+                if (value === '' || (value >= 1 && value <= 10)) {
+                  dispatch({ type: 'SET_GUESTS', payload: value });
+                }
+                }}
+              required
+            />
+            <label htmlFor="occasion">Occasion</label>
+            <select
+              id="occasion"
+              name="occasion"
+              value={state.occasion}
+              onChange={(e) => dispatch({type: 'SET_OCCASION', payload: e.target.value})}
+              required
+            >
+              <option value="birthday">Birthday</option>
+              <option value="anniversary">Anniversary</option>
+            </select>
+          </div>
+          <button type="submit">
+              Make Your reservation
+          </button>
         </div>
-      </div>
-      <div className="multi_input_container">
-        <label htmlFor="res-date">Choose date</label>
-        <input
-          type="date"
-          id="res-date"
-          name="date"
-          value={state.date}
-          onChange={(e) => dispatch({type: 'SET_DATE', payload: e.target.value})}
-          required
-        />
-        <label htmlFor="res-time">Choose time</label>
-        <select
-          id="res-time"
-          name="time"
-          value={state.time}
-          onChange={(e) => dispatch({type: 'SET_TIME', payload: e.target.value})}
-          required
-        >
-          {availableTimes.availableTimes.map((time, index) => <option key={index}>{time}</option>)}
-        </select>
-      </div>
-      <label htmlFor="guests">Number of guests</label>
-      <input
-        type="text"
-        placeholder="1"
-        id="guests"
-        name="guests"
-        value={state.guests}
-        onChange={(e) => dispatch({type: 'SET_GUESTS', payload: e.target.value})}
-        required
-      />
-      <label htmlFor="occasion">Occasion</label>
-      <select
-        id="occasion"
-        name="occasion"
-        value={state.occasion}
-        onChange={(e) => dispatch({type: 'SET_OCCASION', payload: e.target.value})}
-        required
-      >
-        <option value="birthday">Birthday</option>
-        <option value="anniversary">Anniversary</option>
-      </select>
-      <button type="submit">
-        Make Your reservation
-      </button>
-    </form>
+      </form>
+    </div>
 
   );
 };
