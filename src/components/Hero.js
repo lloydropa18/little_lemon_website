@@ -1,4 +1,5 @@
 import heroImage from "../images/restauranfood.jpg";
+import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <section className="hero_section">
@@ -9,9 +10,7 @@ const Hero = () => {
           We are family owned Mediterranean restaurant, focused on traditional
           recipes served with a modern twist.
         </p>
-        <a className="button" href="#">
-          Reserve a Table
-        </a>
+        <Link to="/bookingpage" className="button">Reserve a Table</Link>
       </div>
 
       <div className="hero_image">

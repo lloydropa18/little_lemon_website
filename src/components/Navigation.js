@@ -14,12 +14,6 @@ const Navigation = () => {
           <a href="#menu">Menu</a>
         </li>
         <li>
-          <Link to="/bookingpage">Reservations</Link>
-        </li>
-        <li>
-          <Link to="/orderpage">Order Online</Link>
-        </li>
-        <li>
           <a href="#login">Login</a>
         </li>
       </ul>

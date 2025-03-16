@@ -9,8 +9,8 @@ function App() {
   const [form, setFormData] = useState({
     date: "",
     time: "",
-    guests: 1,
-    occasion: "",
+    guests: "",
+    occasion: ""
   })
   const seededRandom = function (seed) {
     var m = 2 ** 35 - 31;
@@ -73,7 +73,7 @@ function App() {
             />
           }
         ></Route>
-        <Route path="/confirmationpage" element={<Confirmationpage form={form}/>}></Route>
+        <Route path="/confirmationpage" element={<Confirmationpage form={form} setFormData={setFormData}/>}></Route>
       </Routes>
     </>
   );

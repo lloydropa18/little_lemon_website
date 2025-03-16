@@ -100,8 +100,9 @@ const BookingForm = ({ availableTimes, timeDispatch , submitForm }) => {
               onChange={(e) => dispatch({type: 'SET_OCCASION', payload: e.target.value})}
               required
             >
-              <option value="birthday">Birthday</option>
-              <option value="anniversary">Anniversary</option>
+              <option>Select Occasion</option>
+              <option value="Anniversary">Anniversary</option>
+              <option value="Birthday">Birthday</option>
             </select>
           </div>
           <button type="submit">
