@@ -240,7 +240,7 @@ footer .footer_navigation a {
   border-radius: 20px;
   margin-top: 10px;
 }
-.input_container button {
+button {
   text-decoration: none;
   font-weight: bold;
   font-size: 12px;
@@ -249,7 +249,7 @@ footer .footer_navigation a {
   padding: 10px 12px;
   border: none;
   border-radius: 10px;
-  margin-bottom: 10px;
+  margin: 10px;
 }
 
 /* Media Query for Desktop */

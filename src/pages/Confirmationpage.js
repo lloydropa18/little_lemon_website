@@ -1,12 +1,12 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BookingSlot from "../components/BookingSlot"
-const Confirmationpage = ({form , setFormData}) => {
+const Confirmationpage = ({form}) => {
 
   return (
     <>
       <Header />
-      <BookingSlot form={form} setFormData={setFormData}/>
+      <BookingSlot form={form} />
       <Footer />
     </>
   );

@@ -1,10 +1,35 @@
+import { useNavigate} from "react-router-dom";
+import { useState } from "react";
 
+const BookingSlot = ({form}) => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    card: '',
+    expMonth: '',
+    expYear: '',
+    cvv: ''
+  })
 
-const BookingSlot = ({form, setFormData}) => {
+  const navigate = useNavigate()
+
+  function handleChange(e) {
+    const {name, value} = e.target
+    setFormData({
+      ...form, 
+      [name] : value
+    })
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+  }
+
   console.log(form)
   return (
     <div>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <h1>Reservation Details</h1>
           <h3>Date: {form.date}</h3>
           <h3>Time: {form.time}</h3>
@@ -13,17 +38,31 @@ const BookingSlot = ({form, setFormData}) => {
         <h1>Personal Information</h1>
         <div>
           <label htmlFor="">First Name:
-            <input type="text" />
+            <input
+            type="text"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            />
           </label>
         </div>
         <div>
           <label htmlFor="">Last Name:
-            <input type="text" />
+            <input 
+            type="text"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            />
           </label>
         </div>
         <div>
           <label htmlFor="">Email:
-            <input type="text" />
+            <input 
+            type="email" 
+            name="email"
+            value={formData.email}
+            onChange={handleChange}/>
           </label>
         </div>
 
@@ -32,24 +71,45 @@ const BookingSlot = ({form, setFormData}) => {
 
           <div>
             <label htmlFor="">Card Number
-              <input type="number" />
+              <input 
+              type="number" 
+              name="card"
+              value={formData.card}
+              onChange={handleChange}
+              maxLength={16}
+              />
             </label>
           </div>
 
           <div className="multi_input_container_cvv">
           <div>
-            <label htmlFor="">Expiration Date</label>
-            <input type="text" placeholder="Month"/>
-            <input type="number" placeholder="Year"/>
+            <label htmlFor="expMonth">Expiration Date</label>
+            <input 
+              type="text" 
+              name="expMonth" 
+              placeholder="Month" 
+              value={formData.expMonth} 
+              onChange={handleChange}/>
+            <input 
+              type="number" 
+              name="expYear" 
+              placeholder="Year" 
+              value={formData.expYear} 
+              onChange={handleChange}/>
           </div>
           <div>
             <label htmlFor="">CVV
-              <input type="number"/>
+              <input
+              type="number"
+              name="cvv"
+              value={formData.cvv}
+              onChange={handleChange}
+              />
             </label>
           </div>
           </div>
         </div>
-        <button>Confirm Reservation</button>
+        <button type="submit">Confirm Reservation</button>
       </form>
     </div>
   );
