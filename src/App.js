@@ -73,7 +73,7 @@ function App() {
             />
           }
         ></Route>
-        <Route path="/confirmationpage" element={<Confirmationpage form={form} setFormData={setFormData}/>}></Route>
+        <Route path="/confirmationpage" element={<Confirmationpage form={form} />}></Route>
       </Routes>
     </>
   );
